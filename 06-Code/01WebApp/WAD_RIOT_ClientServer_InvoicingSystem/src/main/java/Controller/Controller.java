@@ -6,6 +6,7 @@ import ModelDAOImpl.MenuItemDAOImpl;
 import Model.User;
 import ModelDAOImpl.ClientDAOImpl;
 import ModelDAOImpl.UserDAOImpl;
+import static io.github.pixee.security.jakarta.PathValidator.validateDispatcherPath;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -453,7 +454,7 @@ public class Controller extends HttpServlet {
         System.out.println("View to Send is: " + viewToSend);
         // Code modified from Michael Cobacango's tutorial
         // https://www.youtube.com/playlist?list=PLLV74Oll0_H1NdtWeGRjBLWrAUjSYzKNw
-        RequestDispatcher view = request.getRequestDispatcher(viewToSend);
+        RequestDispatcher view = request.getRequestDispatcher(validateDispatcherPath(viewToSend));
         view.forward(request, response);
     }
 
